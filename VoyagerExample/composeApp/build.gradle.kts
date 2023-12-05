@@ -46,6 +46,10 @@ kotlin {
             implementation(compose.material)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+
+            //Voyager
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
         }
     }
 }
