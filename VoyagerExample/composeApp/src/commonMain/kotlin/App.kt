@@ -18,14 +18,18 @@ import cafe.adriel.voyager.transitions.FadeTransition
 import cafe.adriel.voyager.transitions.ScaleTransition
 import cafe.adriel.voyager.transitions.SlideTransition
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import ui.MainScreen
 
 @Composable
 fun App() {
     MaterialTheme {
-        Navigator(Wea1()){
+//        Navigator(Wea1()){
+//            SlideTransition(it)
+//            //ScaleTransition(it)
+//            //FadeTransition(it)
+//        }
+        Navigator(MainScreen()){
             SlideTransition(it)
-            //ScaleTransition(it)
-            //FadeTransition(it)
         }
     }
 }
@@ -39,7 +43,7 @@ class Wea1 : Screen{
             contentAlignment = Alignment.Center
         ) {
             Button(onClick = { navigator?.push(Wea2()) }) {
-                Text("Go to Wea2")
+                Text("Go to Screen 2")
             }
         }
     }
@@ -61,12 +65,12 @@ class Wea2 : Screen{
                 Button(onClick = {
                     navigator?.push(Wea3())
                 }) {
-                    Text("Go to Wea3")
+                    Text("Go to Screen 3")
                 }
                 Button(onClick = {
                     navigator?.pop()
                 }) {
-                    Text("Go to Wea1")
+                    Text("Go to Screen 1")
                 }
             }
         }
@@ -82,7 +86,7 @@ class Wea3 : Screen{
             contentAlignment = Alignment.Center
         ) {
             Button(onClick = { navigator?.push(Wea1()) }) {
-                Text("Go to Wea1")
+                Text("Go to Screen 1")
             }
         }
     }
