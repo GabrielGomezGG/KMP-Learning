@@ -7,7 +7,7 @@ permite compartir el código Kotlin en diferentes plataformas como iOS, Android,
 permite compartir ui de compose en diferentes plataformas como iOS, Android, Desktop y Web.
 
 ## [Voyager](https://voyager.adriel.cafe/)
-Una libreria que permite compartir la navegación de manera sencilla entre las diferentes plataformas plataformas.
+Una libreria que permite compartir la navegación de manera sencilla entre las diferentes plataformas.
 
 | Navegación simple + Transiciones | Navegación con TabNavigator |
 | --- | --- |
