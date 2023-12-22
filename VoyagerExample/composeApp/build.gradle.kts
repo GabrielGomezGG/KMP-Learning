@@ -51,6 +51,9 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
             implementation(libs.voyager.tabNavigator)
+
+            //Multiplatform Settings
+            implementation(libs.multiplatform.settings)
         }
     }
 }
