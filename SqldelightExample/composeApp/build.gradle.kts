@@ -7,13 +7,23 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+
+    id("app.cash.sqldelight") version libs.versions.sqldelight
 }
 
 kotlin {
+//    androidTarget {
+//        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+//        compilerOptions {
+//            jvmTarget.set(JvmTarget.JVM_11)
+//        }
+//    }
+
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
         }
     }
     
@@ -25,6 +35,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // SQLDelight
+            implementation(libs.android.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -33,9 +46,16 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            // SQLDelight
+            implementation(libs.coroutines.extensions)
+            implementation(libs.stately.common) // Needed by SQLDelight
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+
+            // SQLDelight
+            implementation(libs.sqldelight.sqlite.driver)
         }
     }
 }
@@ -85,6 +105,14 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Exe)
             packageName = "com.gg.sqldelight_example"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("titidatabase") {
+            packageName.set("com.gg")
         }
     }
 }

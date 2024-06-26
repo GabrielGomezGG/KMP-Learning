@@ -1,0 +1,19 @@
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL
+);
+
+INSERT INTO user (name)
+VALUES ('Ryan Getzlaf');
+
+selectAllUser:
+SELECT * FROM user;
+
+insertNewUser:
+INSERT INTO user (name) VALUES ('John Gibson');
+
+insertNewUserFromObject:
+INSERT INTO user VALUES ?;
+
+deleteUser:
+DELETE FROM user WHERE id = ?;
