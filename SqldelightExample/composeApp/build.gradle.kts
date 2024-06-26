@@ -56,6 +56,9 @@ kotlin {
 
             // Koin
             implementation(libs.koin.core)
+
+            // Viewmodel
+            implementation(libs.lifecycle.viewmodel.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
