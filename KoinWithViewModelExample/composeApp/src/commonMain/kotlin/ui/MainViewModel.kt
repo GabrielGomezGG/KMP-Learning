@@ -8,13 +8,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    wea: String
+) : ViewModel() {
 
     private val _timer = MutableStateFlow(0)
     val timer = _timer.asStateFlow()
 
     init {
         startTimer()
+        println(wea)
     }
 
     private fun startTimer(){
