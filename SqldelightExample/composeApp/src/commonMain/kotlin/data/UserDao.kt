@@ -5,7 +5,7 @@ import com.gg.User
 import com.gg.titidatabase
 
 class UserDao(
-    sqlDriver: SqlDriver
+    sqlDriver: SqlDriver,
 ) {
     private val database = titidatabase(sqlDriver)
     private val userQueries = database.titidatabaseQueries
