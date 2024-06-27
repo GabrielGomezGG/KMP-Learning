@@ -1,5 +1,6 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import data.getTodoDatabase
 import di.appModule
 import expect.KoinInitializer
 import expect.viewModelModule
@@ -9,10 +10,12 @@ fun main() = application {
 
     KoinInitializer().initKoin()
 
+    val todoDao = getTodoDatabase().getDao()
+
     Window(
         onCloseRequest = ::exitApplication,
         title = "KoinWithViewModelExample",
     ) {
-        App()
+        App(todoDao)
     }
 }
