@@ -1,8 +1,8 @@
 package di
 
-import data.getTodoDatabase
+import expect.RoomDatabaseExpect
 import org.koin.dsl.module
 
 fun databaseModule() = module {
-    single { getTodoDatabase().getDao() }
+    single { RoomDatabaseExpect().getAppDatabase().getDao() }
 }
