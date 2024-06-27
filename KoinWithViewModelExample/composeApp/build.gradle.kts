@@ -27,7 +27,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.koin.android)
-            implementation(libs.koin.android.compose)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -37,7 +37,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation(libs.koin.core)
+            api(libs.koin.core)
             implementation(libs.koin.compose)
 
             implementation(libs.viewmodel)
