@@ -12,10 +12,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val todoDao = getTodoDatabase(applicationContext).getDao()
-
         setContent {
-            App(todoDao)
+            App()
         }
     }
 }

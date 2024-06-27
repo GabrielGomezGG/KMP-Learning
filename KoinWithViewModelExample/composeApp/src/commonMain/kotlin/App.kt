@@ -28,66 +28,25 @@ import ui.MainViewModel
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 @Preview
-fun App(
-    todoDao: TodoDao
-) {
-
-    LaunchedEffect(true) {
-        val todoList = listOf(
-            TodoEntity(
-                title = "Test",
-                content = "Test description"
-            ),
-            TodoEntity(
-                title = "Test 2",
-                content = "Test description 2"
-            ),
-            TodoEntity(
-                title = "Test 3",
-                content = "Test description 3"
-            ),
-            TodoEntity(
-                title = "Test 4",
-                content = "Test description 4"
-            ),
-            TodoEntity(
-                title = "Test 5",
-                content = "Test description 5"
-            )
-        )
-
-        todoList.forEach {
-            todoDao.insert(it)
-        }
-    }
+fun App() {
 
     MaterialTheme {
         KoinContext {
 
             val mainViewModel = koinInject<MainViewModel>()
-            val timer by mainViewModel.timer.collectAsState(0)
 
-            val todos by todoDao.getAllAsFlow().collectAsState(emptyList())
-            val scope = rememberCoroutineScope()
+            val todos by mainViewModel.todosFlow.collectAsState(emptyList())
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                item {
-                    Text(
-                        text = "Timer: $timer",
-                        style = MaterialTheme.typography.h4
-                    )
-                }
                 items(todos) {
                     ListItem(
                         text = { Text(it.title) },
                         secondaryText = { Text(it.content) },
                         modifier = Modifier.clickable {
-                            scope.launch {
-                                todoDao.delete(it)
-                            }
+                            mainViewModel.deleteTodo(it)
                         }
                     )
                 }

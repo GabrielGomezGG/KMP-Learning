@@ -10,12 +10,10 @@ fun main() = application {
 
     KoinInitializer().initKoin()
 
-    val todoDao = getTodoDatabase().getDao()
-
     Window(
         onCloseRequest = ::exitApplication,
         title = "KoinWithViewModelExample",
     ) {
-        App(todoDao)
+        App()
     }
 }
